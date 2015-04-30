@@ -42,7 +42,8 @@ void loop() {
   valorCantoEsq = analogRead(sensorCantoEsq);
   valorCantoDir = analogRead(sensorCantoDir);
   
-  if((valorLinhaEsq > ValorCorte)&&(valorLinhaDir > ValorCorte)){
+  if((valorLinhaEsq > ValorCorte)&&(valorLinhaDir > ValorCorte))7
+  {
     analogWrite (E1,velocidade);      
     analogWrite (E2,velocidade); 
     digitalWrite(M1,LOW);
@@ -55,7 +56,8 @@ if((valorLinhaEsq < ValorCorte)&&(valorLinhaDir > ValorCorte)){
     digitalWrite(M1,HIGH);
     digitalWrite(M2,LOW);      
   }
-  if((valorLinhaEsq > ValorCorte)&&(valorLinhaDir < ValorCorte)){
+  if((valorLinhaEsq > ValorCorte)&&(valorLinhaDir < ValorCorte))
+  {
     analogWrite (E1,velocidade);      
     analogWrite (E2,velocidade); 
     digitalWrite(M1,LOW);

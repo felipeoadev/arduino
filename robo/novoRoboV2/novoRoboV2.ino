@@ -66,7 +66,8 @@ void setup()
 boolean obterDistancia()
 {
   float cmMsec;
-
+  float microsec;
+  
   cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
   
   if (cmMsec > 5)
@@ -85,7 +86,18 @@ boolean obterDistancia()
 
 void loop() 
 {     
-  if (obterDistancia())
+    valorLinhaDir = analogRead(sensorLinhaDir);
+    valorLinhaEsq = analogRead(sensorLinhaEsq);
+    
+    Serial.print("Esquerda ");
+    Serial.println(valorLinhaEsq);
+  
+    Serial.print("Direita ");
+    Serial.println(valorLinhaDir);  
+    
+    delay(1000);
+  
+/*  if (obterDistancia())
   {
     valorLinhaDir = analogRead(sensorLinhaDir);
     valorLinhaEsq = analogRead(sensorLinhaEsq);
@@ -145,6 +157,6 @@ void loop()
     dualmotor.M2move(255,1);
     delay(250);        */
 
-  }
+  //}
 }
 

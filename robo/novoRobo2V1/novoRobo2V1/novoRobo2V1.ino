@@ -11,12 +11,12 @@ AF_DCMotor motorDir(1), motorEsq(2);
 int sensorLinhaEsq = 8;
 int sensorLinhaDir = 9;
 
-
 //Valor de corte < 700 branco > preto
-int ValorCorte = 700;
+int ValorCorteEsq = 900;
+int ValorCorteDir = 700;
 
 //Velocidade do carrinho
-const int velocidade = 180;
+const int velocidade = 130;
 
 //Valores de leitura do sensor de refletancia
 int valorLinhaEsq, valorLinhaDir = 0;
@@ -29,7 +29,7 @@ void setup()
   motorDir.setSpeed(velocidade);
   motorEsq.setSpeed(velocidade); 
 
-  //motorDir.run(RELEASE);
+  //motorDir.run(RELEASE)
   //motorEsq.run(RELEASE);
 }
 
@@ -48,25 +48,31 @@ void loop()
 
   
   //Se os sensores maior que valor de corte segue em frente 
-  if((valorLinhaEsq > ValorCorte) && (valorLinhaDir > ValorCorte))
+  if((valorLinhaEsq > ValorCorteEsq) && (valorLinhaDir > ValorCorteDir))
   {
     motorDir.run(FORWARD);
     motorEsq.run(FORWARD);    
   }  
   
   //Se os sensores esquerdo menor que valor de corte vira para esquerda
-  if((valorLinhaEsq < ValorCorte)&&(valorLinhaDir > ValorCorte))
+  if((valorLinhaEsq < ValorCorteEsq)&&(valorLinhaDir > ValorCorteDir))
   { 
     motorDir.run(FORWARD);
     motorEsq.run(RELEASE);
   }  
 
   //Se os sensor direito menor que valor de corte vira para esquerda 
-  if((valorLinhaEsq > ValorCorte)&&(valorLinhaDir < ValorCorte))
+  if((valorLinhaEsq > ValorCorteEsq)&&(valorLinhaDir < ValorCorteDir))
   { 
     motorDir.run(RELEASE);
     motorEsq.run(FORWARD);
   }
+  
+  if((valorLinhaEsq > ValorCorteEsq)&&(valorLinhaDir < ValorCorteDir))
+  { 
+    motorDir.run(RELEASE);
+    motorEsq.run(FORWARD);
+  }  
 
   delay(250);
 }

@@ -63,6 +63,12 @@ void loop()
   valorLinhaDir = analogRead(sensorLinhaDir);
   valorLinhaEsq = analogRead(sensorLinhaEsq);
   
+  /*     Serial.println("Esq ");
+     Serial.println(valorLinhaEsq);  
+          Serial.println("Dir ");
+     Serial.println(valorLinhaDir); 
+   delay(1000); */
+  
   if ((valorLinhaEsq < ValorCorte) && (valorLinhaDir < ValorCorte))
   {
       Motor1(100,true);  //You can change the speed, such as Motor(50,true)
